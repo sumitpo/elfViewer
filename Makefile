@@ -5,18 +5,18 @@
 
 IDIR =./include
 CC=gcc
-CFLAGS=-I$(IDIR)
+CFLAGS=-I$(IDIR) -g
 
 ODIR=obj
 
 LIBS=
 
-_OBJ = main.o
+_OBJ = main.o parser.o log.o plot.o
 # OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
 
 .PHONY: clean
 
-all:
+all: main.exe
 	@echo "Makefile needs your attention"
 
 %.o: %.c
@@ -29,3 +29,5 @@ clean:
 	rm -f *.o
 # vim:ft=make
 #
+format:
+	clang-format -i *.c *.h
